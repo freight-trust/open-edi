@@ -3,19 +3,8 @@
    "info": {
       "title": "EDI Management API",
       "description": "EDI validation, translation, and management system.",
-      "version": "1.0.3"
+      "version": "1.0.2"
    },
-       "termsOfService": "https://github.com/freight-trust/legal/blob/master/src/terms-of-service.md",
-    "contact": {
-      "email": "contact@freighttrust.com"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
-  },
-  "host": "http://ec2-52-53-248-65.us-west-1.compute.amazonaws.com:8080/",
-  "basePath": "/v2",
    "tags": [
       {
          "name": "Transactions",

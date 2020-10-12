@@ -3,7 +3,14 @@ openapi: 3.0.3
 info:
   title: EDI Management API
   description: "EDI validation, translation, and management system."
-  version: 1.0.6
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Open EDI Service Broker
+    url: https://www.freighttrust.com
+    email: contact@freighttrust.com
+  version: 1.0.7
 security:
 - APIKeyScheme: []
   OAuth2Scheme: []
@@ -20,7 +27,7 @@ tags:
 - name: Schema Maintenance
   description: Define and review the EDI schemas available in the system
 paths:
-  /config.js:
+  /configs:
     get:
       tags:
       - Configuration
@@ -42,7 +49,7 @@ paths:
       - name: name
         in: query
         schema:
-          default: ""
+          default: " a-zA-Z "
           type: string
       responses:
         "200":
@@ -58,7 +65,7 @@ paths:
       - Administration
       summary: Create a new channel
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -70,7 +77,7 @@ paths:
           headers:
             Location:
               description: Location of the newly created channel
-              style: simple
+              x-style: simple
               schema:
                 format: uri
                 type: string
@@ -108,7 +115,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -148,7 +155,7 @@ paths:
       - Administration
       summary: Create a new group control record for an interchange control.
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -160,7 +167,7 @@ paths:
           headers:
             Location:
               description: Location of the newly created record
-              style: simple
+              x-style: simple
               schema:
                 format: uri
                 type: string
@@ -193,7 +200,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -235,7 +242,7 @@ paths:
       - Administration
       summary: Create a new interchange control record for a channel.
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -247,7 +254,7 @@ paths:
           headers:
             Location:
               description: Location of the newly created interchange control record
-              style: simple
+              x-style: simple
               schema:
                 format: uri
                 type: string
@@ -290,7 +297,7 @@ paths:
         schema:
           type: string
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -335,7 +342,7 @@ paths:
       - Administration
       summary: Create a new transaction control record for an interchange control.
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -347,7 +354,7 @@ paths:
           headers:
             Location:
               description: Location of the newly created record
-              style: simple
+              x-style: simple
               schema:
                 format: uri
                 type: string
@@ -380,7 +387,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
-        description: ""
+        description: " a-zA-Z "
         content:
           application/json:
             schema:
@@ -578,26 +585,26 @@ paths:
                   type: string
                   nullable: false
                 release:
-                  default: ""
+                  default: " a-zA-Z "
                   type: string
                 industryCode:
-                  default: ""
+                  default: " a-zA-Z "
                   type: string
                 transactionCode:
                   pattern: \S
                   type: string
                   nullable: false
                 senderIdType:
-                  default: ""
+                  default: " a-zA-Z "
                   type: string
                 senderId:
-                  default: ""
+                  default: " a-zA-Z "
                   type: string
                 receiverIdType:
-                  default: ""
+                  default: " a-zA-Z "
                   type: string
                 receiverId:
-                  default: ""
+                  default: " a-zA-Z "
                   type: string
                 file:
                   format: binary
@@ -744,7 +751,7 @@ paths:
           headers:
             Location:
               description: Location where the converted transaction has been stored
-              style: simple
+              x-style: simple
               schema:
                 format: uri
                 type: string
@@ -831,7 +838,7 @@ paths:
             Link:
               description: Location to retrieve the associated acknowledgement/validation
                 information associated with the request.
-              style: simple
+              x-style: simple
               schema:
                 type: string
         "200":
@@ -840,7 +847,7 @@ paths:
             Link:
               description: Location to retrieve the associated acknowledgement/validation
                 information associated with the request.
-              style: simple
+              x-style: simple
               schema:
                 type: string
           content:
@@ -1517,6 +1524,8 @@ components:
       description: Not Found; No such record
     DuplicateRecordConflict:
       description: Conflict; Duplicate record
+    "200":
+      description: OK
   parameters:
     id:
       name: id
